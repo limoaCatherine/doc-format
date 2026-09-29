@@ -6,21 +6,24 @@ from pathlib import Path
 
 from docx.shared import Pt, RGBColor
 
-_PKG_DIR = Path(__file__).resolve().parent
-_TOOLS_DIR = _PKG_DIR.parent
-_ROINF_DIR = _TOOLS_DIR.parent
-_LIMOA_DIR = _ROINF_DIR.parent  # monorepo root when nested under Ro_Inf
+# 未传入 --root 时回退到当前工作目录；建议始终显式指定。
+TARGET_DIR = str(Path.cwd())
 
-TARGET_DIR = str(_LIMOA_DIR)
 SKIP_DIR_NAMES = {
-    ".git", ".venv", "venv", "node_modules", "__pycache__", ".cursor",
-    "cursor",
-    "ROINF文档备份", "游戏包体", "ComfyUI", "ro_lora_training",
-    ".pytest_cache", "dist", "build", ".idea",
+    ".git",
+    ".venv",
+    "venv",
+    "node_modules",
+    "__pycache__",
+    ".cursor",
+    ".pytest_cache",
+    "dist",
+    "build",
+    ".idea",
+    "out",
 }
 
-# 框架配置表：只改字体名，不做表头/列宽/标签美化
-# framework layout is owned by numerical design workbook / opt scripts; formatter only touches fonts
+# 框架类工作簿：只改字体，不做表头/列宽/标签美化
 XLSX_FONT_ONLY_KEYWORDS = ("战斗数值框架", "标模平衡")
 
 FONT_NAME = "微软雅黑"

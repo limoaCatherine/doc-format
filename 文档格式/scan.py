@@ -27,8 +27,6 @@ def iter_files(root: str) -> Dict[str, List[str]]:
             if name.startswith("~$") or name.startswith(".~"):
                 continue
             path = os.path.join(dirpath, name)
-            if path.replace("\\", "/").find("/ROINF文档备份/") >= 0:
-                continue
             out[ext].append(path)
     for k in out:
         out[k].sort()

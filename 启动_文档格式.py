@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""ROINF 文档格式。办公文件轻量排版（Word / Excel）。
+"""办公文件轻量排版（Word / Excel）。
 
 用法:
-  python 启动_文档格式.py
-  python 启动_文档格式.py --docx-only
-  python 启动_文档格式.py --xlsx-only
+  python 启动_文档格式.py --root <目录>
+  python 启动_文档格式.py --root <目录> --docx-only
+  python 启动_文档格式.py --root <目录> --xlsx-only
 """
 from __future__ import annotations
 
@@ -31,15 +31,14 @@ for _name in _SIBLING_REPOS:
         sys.path.insert(0, str(_p))
 
 
-
 def main(argv: Optional[list[str]] = None) -> int:
     from 文档格式.config import TARGET_DIR
     from 文档格式.pipeline import run
 
     ap = argparse.ArgumentParser(
-        description="办公文件轻量排版（Word .docx / Excel .xlsx）。无本地备份，请先 git commit。"
+        description="办公文件轻量排版（Word .docx / Excel .xlsx）。就地修改，不写 .bak；请先提交或备份。"
     )
-    ap.add_argument("--root", default=TARGET_DIR, help="扫描根目录，默认 Limoa")
+    ap.add_argument("--root", default=TARGET_DIR, help="扫描根目录（默认：当前工作目录）")
     ap.add_argument("--docx-only", action="store_true", help="只处理 Word")
     ap.add_argument("--xlsx-only", action="store_true", help="只处理 Excel")
     args = ap.parse_args(argv)
