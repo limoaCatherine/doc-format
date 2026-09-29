@@ -9,7 +9,7 @@ from docx.shared import Pt, RGBColor
 _PKG_DIR = Path(__file__).resolve().parent
 _TOOLS_DIR = _PKG_DIR.parent
 _ROINF_DIR = _TOOLS_DIR.parent
-_LIMOA_DIR = _ROINF_DIR.parent  # D:\Limoa
+_LIMOA_DIR = _ROINF_DIR.parent  # monorepo root when nested under Ro_Inf
 
 TARGET_DIR = str(_LIMOA_DIR)
 SKIP_DIR_NAMES = {

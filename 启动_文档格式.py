@@ -31,6 +31,7 @@ for _name in _SIBLING_REPOS:
         sys.path.insert(0, str(_p))
 
 
+
 def main(argv: Optional[list[str]] = None) -> int:
     from 文档格式.config import TARGET_DIR
     from 文档格式.pipeline import run
